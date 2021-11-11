@@ -27,7 +27,8 @@ import com.google.android.gms.tasks.OnCompleteListener
 class MainActivity : AppCompatActivity() {
 
     lateinit var tasklist: MutableList<Task>
-   // private lateinit var taskAdapter: TaskAdapter
+
+    // private lateinit var taskAdapter: TaskAdapter
     val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,22 +59,25 @@ class MainActivity : AppCompatActivity() {
         db.collection("tasks")
             .get()
             .addOnSuccessListener { task ->
-                    for (document in task.documents) {
-                        //val retrievedTask = Task(
-                            tasklist.add( Task(
+                for (document in task.documents) {
+                    //val retrievedTask = Task(
+                    tasklist.add(
+                        Task(
+                            document.id,
                             document.data!!.get("Title").toString(),
                             document.data!!.get("Time").toString(),
                             document.data!!.get("Date").toString(),
                             document.data!!.get("Description").toString(),
                             document.data!!.get("Status") as Boolean
-                        ))
+                        )
+                    )
 
 
-                        //Log.d("Firebase doc", retrievedTask.toString())
+                    //Log.d("Firebase doc", retrievedTask.toString())
 
-                    }
-                taskRecyclerView.adapter = TaskAdapter(tasklist)
                 }
+                taskRecyclerView.adapter = TaskAdapter(tasklist)
+            }
             .addOnFailureListener { e ->
                 Log.d("Firebase error", e.message.toString())
             }

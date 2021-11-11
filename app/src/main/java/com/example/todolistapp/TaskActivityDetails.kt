@@ -1,11 +1,14 @@
 package com.example.todolistapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.firestore.FirebaseFirestore
 
 class TaskActivityDetails:AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,7 +34,18 @@ class TaskActivityDetails:AppCompatActivity() {
             alertDialog.setTitle("Delete Task")
             alertDialog.setMessage("Do you want to delete this task?")
             alertDialog.setPositiveButton("Yes"){ dialog, which ->
-                finish()
+                var db = FirebaseFirestore.getInstance()
+
+                db.collection("tasks").document(task.id!!)
+                    .delete()
+                    .addOnSuccessListener {
+                            finish()
+                        var intent = Intent(this,MainActivity::class.java)
+                        startActivity(intent)
+                    }
+                    .addOnFailureListener {
+                        Toast.makeText(this, "Task has not be deleted", Toast.LENGTH_SHORT).show()
+                    }
             }
 
             alertDialog.setNegativeButton("No"){ dialog, which ->
@@ -42,5 +56,12 @@ class TaskActivityDetails:AppCompatActivity() {
 
             exitDialog.show()
         }
+        imageEdit.setOnClickListener {
+                var editIntent = Intent(this,EditTaskActivity::class.java)
+                editIntent.putExtra("task",task)
+                startActivity(editIntent)
+        }
     }
+
+
 }

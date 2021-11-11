@@ -56,6 +56,7 @@ class NewTask : AppCompatActivity() {
                 return@setOnClickListener
             }
             var newTask = Task(
+                null,
                 newTaskTitle.text.toString(),
                 newTaskDate.text.toString(),
                 newTaskTime.text.toString(),
@@ -74,7 +75,7 @@ class NewTask : AppCompatActivity() {
 // Add a new document with a generated ID
 
 // Add a new document with a generated ID
-            val taskInstance = Task(newTask.title,newTask.date,newTask.time,newTask.description,newTask.status)
+//            val taskInstance = Task(newTask.title,newTask.date,newTask.time,newTask.description,newTask.status)
             Toast.makeText(this, "Adding task", Toast.LENGTH_SHORT).show()
             Globals.db.collection("tasks")
                 .add(task)
