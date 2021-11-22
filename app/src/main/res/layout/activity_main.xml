@@ -10,59 +10,47 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/TaskRecyclerView"
         android:layout_width="0dp"
-        android:layout_height="200dp"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="121dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTodaytask"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/textViewGreeting"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="80dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="30dp"
         android:text="GOOD MORNING"
         android:textColor="#BABABA"
         android:textSize="20sp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/textViewName"
-        android:layout_width="67dp"
-        android:layout_height="32dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="20dp"
-        android:text="NAJAH"
-        android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textColor="#959595"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewGreeting" />
+        app:layout_constraintTop_toBottomOf="@+id/taskToolbar" />
 
     <TextView
         android:id="@+id/textViewTodaytask"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="53dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
         android:text="TodayTask"
-        app:layout_constraintBottom_toTopOf="@+id/TaskRecyclerView"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewDate" />
 
     <TextView
         android:id="@+id/textViewNumberofTasks"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginBottom="8dp"
-        android:text="(6)"
-        app:layout_constraintBottom_toTopOf="@+id/TaskRecyclerView"
-        app:layout_constraintStart_toEndOf="@+id/textViewTodaytask" />
+        android:layout_marginTop="32dp"
+        app:layout_constraintStart_toEndOf="@+id/textViewTodaytask"
+        app:layout_constraintTop_toBottomOf="@+id/cardViewDate" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButtonAdded"
@@ -82,13 +70,47 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardViewDate"
         android:layout_width="0dp"
-        android:layout_height="55dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="120dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginBottom="49dp"
-        app:layout_constraintBottom_toTopOf="@+id/textViewTodaytask"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="24dp"
+        app:cardCornerRadius="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewName" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewGreeting">
+
+        <com.github.jhonnyx2012.horizontalpicker.HorizontalPicker
+            android:id="@+id/datePicker"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#F6F6F6"
+            android:orientation="horizontal" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <ProgressBar
+        android:id="@+id/mainProgressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="#C5A8A7"
+        app:layout_constraintBottom_toBottomOf="@+id/TaskRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/TaskRecyclerView"
+        app:layout_constraintStart_toStartOf="@+id/TaskRecyclerView"
+        app:layout_constraintTop_toTopOf="@+id/TaskRecyclerView" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/taskToolbar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleMarginStart="150dp"
+        app:titleTextColor="#FF000000" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

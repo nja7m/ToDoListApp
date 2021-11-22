@@ -7,92 +7,106 @@
     android:padding="10dp"
     android:background="@drawable/background">
 
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/EditToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:titleMarginStart="125dp"
+        app:titleTextColor="#000000" />
+
     <androidx.cardview.widget.CardView
         android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_height="408dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="100dp"
         android:layout_marginEnd="20dp"
-        android:layout_marginBottom="259dp"
+        android:layout_marginBottom="150dp"
+        app:cardCornerRadius="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0"
-        app:cardCornerRadius="25dp">
+        app:layout_constraintTop_toBottomOf="@+id/EditToolbar">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayoutEdit"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <EditText
-                android:id="@+id/editTextEditTitle"
-                android:layout_width="wrap_content"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/editTextEditTitleLayout"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="52dp"
-                android:layout_marginTop="21dp"
-                android:ems="10"
-                android:hint="Task Title"
-                android:inputType="textPersonName"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:background="#EAEAEA"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/editTextEditTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <EditText
                 android:id="@+id/editTextEditDescription"
-                android:layout_width="226dp"
-                android:layout_height="123dp"
-                android:layout_marginStart="59dp"
-                android:layout_marginTop="25dp"
-                android:layout_marginBottom="38dp"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="@drawable/text_view_bg"
                 android:ems="10"
-                android:hint="Description"
-                android:inputType="textPersonName"
+                android:gravity="start"
+                android:inputType="textMultiLine"
+                android:padding="8dp"
                 app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/imageViewEditTime" />
-
-            <ImageView
-                android:id="@+id/imageViewEditTime"
-                android:layout_width="25dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="47dp"
-                android:layout_marginTop="22dp"
-                app:layout_constraintStart_toEndOf="@+id/textViewEditTaskDate"
-                app:layout_constraintTop_toBottomOf="@+id/editTextEditTitle"
-                app:srcCompat="@drawable/clock" />
-
-            <ImageView
-                android:id="@+id/imageViewEditDate"
-                android:layout_width="25dp"
-                android:layout_height="30dp"
-                android:layout_marginStart="27dp"
-                android:layout_marginTop="88dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/calendar" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
             <TextView
                 android:id="@+id/textViewEditTaskDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="21dp"
-                android:layout_marginTop="25dp"
+                android:layout_width="81dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="12dp"
+                android:background="#EAEAEA"
                 android:hint="Date"
-                app:layout_constraintStart_toEndOf="@+id/imageViewEditDate"
-                app:layout_constraintTop_toBottomOf="@+id/editTextEditTitle" />
+                app:layout_constraintStart_toEndOf="@+id/imageView4"
+                app:layout_constraintTop_toBottomOf="@+id/editTextEditTitleLayout" />
 
             <TextView
                 android:id="@+id/textViewEditTaskTime"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="44dp"
-                android:layout_marginTop="28dp"
+                android:layout_width="70dp"
+                android:layout_height="23dp"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="12dp"
+                android:background="#EAEAEA"
                 android:hint="Time"
-                app:layout_constraintStart_toEndOf="@+id/imageViewEditTime"
-                app:layout_constraintTop_toBottomOf="@+id/editTextEditTitle" />
+                app:layout_constraintStart_toEndOf="@+id/textViewEditTaskDate"
+                app:layout_constraintTop_toBottomOf="@+id/editTextEditTitleLayout" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginStart="44dp"
+                android:layout_marginTop="12dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/editTextEditTitleLayout"
+                app:srcCompat="@drawable/deadline__1_" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
@@ -105,7 +119,6 @@
         android:layout_marginBottom="20dp"
         android:clickable="true"
         android:focusable="true"
-        android:foreground="@drawable/ic_baseline_add_24"
         android:src="@drawable/ic_baseline_add_24"
         android:tint="#C5A8A7"
         app:backgroundTint="#FFE2E1"
@@ -117,11 +130,10 @@
         android:id="@+id/floatingActionButtonCancelEdit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
+        android:layout_marginStart="28dp"
         android:layout_marginBottom="20dp"
         android:clickable="true"
         android:focusable="true"
-        android:foreground="@drawable/ic_baseline_clear_24"
         android:src="@drawable/ic_baseline_clear_24"
         android:tint="#C5A8A7"
         app:backgroundTint="#FFE2E1"
